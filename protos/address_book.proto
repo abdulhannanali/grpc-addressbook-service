@@ -49,17 +49,3 @@ message ContactResponse {
     ContactDetails contact = 1;
     bool status = 2; // In order to check if the request was successful or not
 }
-
-// ContactRequest Let's you specify the ids you need in the batch
-// message BatchContactRequest {
-//     repeated string ids = 1;
-// }
-
-// message BatchContactResponse {
-//     repeated ContactDetails contacts = 1;
-//     repeated success_ids = []; // ids which successfully got accept4ed
-
-
-//     int32 length = 2; // Length of the number of contacts specified
-//     bool status = 3; // Status of the request, true if it's successful
-// }

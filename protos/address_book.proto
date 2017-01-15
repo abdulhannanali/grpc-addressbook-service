@@ -1,0 +1,65 @@
+syntax = "proto3";
+package contacts;
+
+// Details for ContactService to fetch contacts
+service ContactService {
+    rpc getContact (ContactRequest) returns (ContactResponse) {}  // Only one method to get the contacts right now
+}
+
+message ContactDetails {
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string address = 5;
+    string email = 7;
+    string website = 8;
+    PhoneNumber phone = 6;
+    ContactType contact_type = 9;
+
+    enum ContactType {
+        UNKNOWN = 0;
+        HOME = 1;
+        WORK = 2;
+        FAKE = 3; // Just something here for laughs
+    }
+
+    // message to specify the information about the phone number
+    message PhoneNumber {
+        string country_code = 1;
+        string phone_number = 2;
+    }
+}
+
+// Simple request to add a contact
+message AddContactRequest {
+    ContactDetails contact = 1;
+}
+
+// Response of AddContactRequest
+message AddContactResponse {
+    bool status = 1;
+    string id = 2;  // ID of the contact, if successful
+}
+
+message ContactRequest {
+    string id = 1;
+}
+
+message ContactResponse {
+    ContactDetails contact = 1;
+    bool status = 2; // In order to check if the request was successful or not
+}
+
+// ContactRequest Let's you specify the ids you need in the batch
+// message BatchContactRequest {
+//     repeated string ids = 1;
+// }
+
+// message BatchContactResponse {
+//     repeated ContactDetails contacts = 1;
+//     repeated success_ids = []; // ids which successfully got accept4ed
+
+
+//     int32 length = 2; // Length of the number of contacts specified
+//     bool status = 3; // Status of the request, true if it's successful
+// }

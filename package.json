@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^3.1.0",
+    "grpc": "^1.0.1",
+    "lodash.noop": "^3.0.1"
+  }
 }
